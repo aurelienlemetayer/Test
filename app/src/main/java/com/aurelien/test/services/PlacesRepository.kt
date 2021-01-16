@@ -16,6 +16,7 @@ class PlacesRepository @Inject constructor(
 
     suspend fun getPlaces(search: String): ApiCoroutinesClient.Result<List<Place>> {
         return apiCoroutinesClient.call(
+            //I have not to implement pagination, but feel free to tell me if you want :)
             { placesApi.getPlaces(search) },
             TAG,
             "Error getting places"
