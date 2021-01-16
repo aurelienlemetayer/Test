@@ -25,6 +25,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        all{
+            buildConfigField 'String', 'NAVITIA_API_URL', '"https://api.navitia.io/v1/coverage/fr-idf/"'
+            buildConfigField 'String', 'NAVITIA_API_TOKEN', '"b56ac04d-d6af-4777-95a2-0ce997442d4a"'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -51,10 +55,13 @@ dependencies {
 
     implementation Dependencies.kotlinCoroutines
     implementation Dependencies.kotlinStdlib
+    implementation(Dependencies.moshi)
     implementation Dependencies.okHttp
     implementation Dependencies.okHttpLoggingInterceptor
     implementation Dependencies.retrofit
+    implementation Dependencies.retrofitMoshiConverter
 
+    //Hilt
     implementation Dependencies.hiltAndroid
     implementation Dependencies.hiltViewModel
     kapt Dependencies.daggerCompiler

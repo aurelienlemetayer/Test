@@ -34,6 +34,7 @@ object Versions {
     //</editor-fold>
 
     const val kotlinCoroutines = "1.4.2"
+    const val moshi = "1.11.0"
     const val okHttp = "4.9.0"
     const val retrofit = "2.9.0"
 }
@@ -70,7 +71,9 @@ object Dependencies {
 
     const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
 }
