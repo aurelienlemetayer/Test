@@ -2,7 +2,9 @@ package com.aurelien.test.fragments
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.SearchView
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView.OnEditorActionListener
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aurelien.test.R
@@ -16,8 +18,8 @@ import com.aurelien.test.services.EventObserver
 import com.aurelien.test.services.models.Place
 import com.aurelien.test.viewmodels.PlacesViewModel
 
+
 class PlacesFragment : BaseFragment<PlacesFragmentBinding>(),
-    SearchView.OnQueryTextListener,
     PlacesRecyclerViewAdapter.PlacesRecyclerViewAdapterCallback {
 
     companion object {
@@ -35,14 +37,43 @@ class PlacesFragment : BaseFragment<PlacesFragmentBinding>(),
         super.onViewCreated(view, savedInstanceState)
 
         initLiveData()
+        initSearchViewEditText()
         initRecyclerView()
-
-        binding.searchView.setOnQueryTextListener(this)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         viewModel.saveState()
         super.onSaveInstanceState(outState)
+    }
+
+    private fun initSearchViewEditText() {
+        binding.searchViewEditText.apply {
+            doAfterTextChanged {
+                if (it.isNullOrEmpty()) {
+                    setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.ic_search_hint,
+                        0,
+                        0,
+                        0
+                    )
+                } else {
+                    setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.ic_search,
+                        0,
+                        0,
+                        0
+                    )
+                }
+            }
+
+            setOnEditorActionListener(OnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    viewModel.searchPlaces(text.toString())
+                    return@OnEditorActionListener true
+                }
+                false
+            })
+        }
     }
 
     private fun initRecyclerView() {
@@ -93,16 +124,6 @@ class PlacesFragment : BaseFragment<PlacesFragmentBinding>(),
 
     private fun showSearchingPlacesErrorLiveData() {
         binding.root.snack(R.string.common_error_message)
-    }
-
-    override fun onQueryTextSubmit(query: String): Boolean {
-        viewModel.searchPlaces(query)
-        return true
-    }
-
-    override fun onQueryTextChange(newText: String?): Boolean {
-        // I've made the choice to only do the search when the text is submit
-        return false
     }
 
     override fun placeClicked(place: Place) {

@@ -6,15 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <EditText
+        android:id="@+id/searchViewEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:iconifiedByDefault="false"
+        android:layout_marginStart="@dimen/margin_12"
+        android:autofillHints="@string/search"
+        android:background="@null"
+        android:drawableStart="@drawable/ic_search_hint"
+        android:drawablePadding="@dimen/margin_12"
+        android:fontFamily="@font/poppins_font_family"
+        android:hint="@string/search"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:paddingTop="@dimen/margin_16"
+        android:paddingBottom="@dimen/margin_16"
+        android:textColor="@color/learjet"
+        android:textColorHint="@color/douglas"
+        android:textSize="@dimen/text_size_17"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="@string/search" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -23,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewEditText"
         tools:itemCount="4"
         tools:listitem="@layout/place_item" />
 
