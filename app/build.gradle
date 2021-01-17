@@ -68,6 +68,8 @@ dependencies {
     kapt Dependencies.hiltCompiler
 
     testImplementation Dependencies.testlib_junit
-    androidTestImplementation Dependencies.testlib_junit
-    androidTestImplementation Dependencies.testandroidx_espressoCore
+    testImplementation Dependencies.testkotlinCoroutines
+    testImplementation Dependencies.testandroidx_core_testing
+    testImplementation Dependencies.testMockitoCore
+    testImplementation Dependencies.testMockitoInline
 }

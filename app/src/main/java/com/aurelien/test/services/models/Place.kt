@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 import java.util.*
 
 @Parcelize
-class Place(
+data class Place(
     val id: String,
     val name: String,
     var isFavorite: Boolean = false
