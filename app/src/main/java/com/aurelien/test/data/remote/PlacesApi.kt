@@ -1,6 +1,6 @@
-package com.aurelien.test.services
+package com.aurelien.test.data.remote
 
-import com.aurelien.test.services.models.PlacesApiResult
+import com.aurelien.test.data.models.PlacesApiResult
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
