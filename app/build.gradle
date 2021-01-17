@@ -51,6 +51,9 @@ dependencies {
     implementation Dependencies.androidx_liveData
     implementation Dependencies.androidx_material
     implementation Dependencies.androidx_recyclerview
+    kapt Dependencies.androidx_roomCompiler
+    implementation Dependencies.androidx_room_ktx
+    implementation Dependencies.androidx_roomRuntime
     implementation Dependencies.androidx_viewModel
 
     implementation Dependencies.kotlinCoroutines

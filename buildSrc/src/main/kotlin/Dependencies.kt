@@ -20,11 +20,13 @@ object Versions {
     const val androidx_liveData = "2.2.0"
     const val androidx_material = "1.2.1"
     const val androidx_recyclerview = "1.1.0"
+    const val androidx_room = "2.2.6"
     const val androidx_viewModel = "2.2.0"
 
     const val hilt = "2.31-alpha"
     const val hiltCompiler = "1.0.0-alpha02"
     const val hiltViewModel = "1.0.0-alpha02"
+
     // </editor-fold>
 
     // <editor-fold desc="testing">
@@ -56,6 +58,9 @@ object Dependencies {
     const val androidx_liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidx_liveData}"
     const val androidx_material = "com.google.android.material:material:${Versions.androidx_material}"
     const val androidx_recyclerview = "androidx.recyclerview:recyclerview:${Versions.androidx_recyclerview}"
+    const val androidx_roomCompiler = "androidx.room:room-compiler:${Versions.androidx_room}"
+    const val androidx_room_ktx = "androidx.room:room-ktx:${Versions.androidx_room}"
+    const val androidx_roomRuntime = "androidx.room:room-runtime:${Versions.androidx_room}"
     const val androidx_viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidx_viewModel}"
 
     const val daggerCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"

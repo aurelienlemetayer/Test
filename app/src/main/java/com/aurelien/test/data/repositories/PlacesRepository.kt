@@ -1,11 +1,14 @@
-package com.aurelien.test.services
+package com.aurelien.test.data.repositories
 
 import com.aurelien.test.core.services.ApiCoroutinesClient
-import com.aurelien.test.services.models.Place
-import com.aurelien.test.services.models.PlacesApiResult
+import com.aurelien.test.data.local.PlacesDao
+import com.aurelien.test.data.remote.PlacesApi
+import com.aurelien.test.data.models.Place
+import com.aurelien.test.data.models.PlacesApiResult
 import javax.inject.Inject
 
 class PlacesRepository @Inject constructor(
+    private val placesDao: PlacesDao,
     private val apiCoroutinesClient: ApiCoroutinesClient,
     private val placesApi: PlacesApi
 ) {
@@ -28,5 +31,18 @@ class PlacesRepository @Inject constructor(
             is ApiCoroutinesClient.Result.Success -> ApiCoroutinesClient.Result.Success(this.data.places)
             is ApiCoroutinesClient.Result.Error -> this
         }
+    }
+
+    suspend fun getFavoritePlaces(): List<Place> {
+        return placesDao.getAllPlaces()
+    }
+
+
+    suspend fun insertFavoritePlace(place: Place) {
+        placesDao.insert(place)
+    }
+
+    suspend fun deleteFavoritePlace(placeId: String) {
+        placesDao.delete(placeId)
     }
 }

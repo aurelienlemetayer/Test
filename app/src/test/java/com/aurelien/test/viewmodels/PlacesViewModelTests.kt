@@ -3,8 +3,8 @@ package com.aurelien.test.viewmodels
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
 import com.aurelien.test.core.services.ApiCoroutinesClient
-import com.aurelien.test.services.PlacesRepository
-import com.aurelien.test.services.models.Place
+import com.aurelien.test.data.repositories.PlacesRepository
+import com.aurelien.test.data.models.Place
 import com.aurelien.test.utils.TestCoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertEquals
