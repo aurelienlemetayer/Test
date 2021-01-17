@@ -2,9 +2,10 @@ package com.aurelien.test.di.modules
 
 import android.content.Context
 import androidx.room.Room
-import com.aurelien.test.data.remote.PlacesApi
 import com.aurelien.test.data.local.PlacesDao
 import com.aurelien.test.data.local.PlacesRoomDatabase
+import com.aurelien.test.data.remote.DeparturesApi
+import com.aurelien.test.data.remote.PlacesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,6 +22,10 @@ class PlacesClientModule {
     @Provides
     @Singleton
     fun providePlacesApi(retrofit: Retrofit) = retrofit.create(PlacesApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDeparturesApi(retrofit: Retrofit) = retrofit.create(DeparturesApi::class.java)
 
     @Provides
     @Singleton
