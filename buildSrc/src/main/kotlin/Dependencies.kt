@@ -29,11 +29,13 @@ object Versions {
 
     // <editor-fold desc="testing">
     const val junit = "4.13"
+    const val androidx_core_testing = "2.1.0"
     const val androidx_ext_junit = "1.1.2"
-    const val androidx_espresso = "3.3.0"
+    const val mockito = "3.5.13"
     //</editor-fold>
 
     const val kotlinCoroutines = "1.4.2"
+    const val moshi = "1.11.0"
     const val okHttp = "4.9.0"
     const val retrofit = "2.9.0"
 }
@@ -64,13 +66,18 @@ object Dependencies {
 
     // <editor-fold desc="testing">
     const val testlib_junit = "junit:junit:${Versions.junit}"
+    const val testandroidx_core_testing = "androidx.arch.core:core-testing:${Versions.androidx_core_testing}"
     const val testandroidx_ext_junit = "androidx.test.ext:junit:${Versions.androidx_ext_junit}"
-    const val testandroidx_espressoCore = "androidx.test.espresso:espresso-core:${Versions.androidx_espresso}"
+    const val testkotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
+    const val testMockitoCore = "org.mockito:mockito-core:${Versions.mockito}"
+    const val testMockitoInline = "org.mockito:mockito-inline:${Versions.mockito}"
     // </editor-fold>
 
     const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    const val moshi = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
 }
