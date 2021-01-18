@@ -12,12 +12,12 @@ import com.aurelien.test.R
 import com.aurelien.test.activities.DeparturesActivity
 import com.aurelien.test.adapters.PlacesRecyclerViewAdapter
 import com.aurelien.test.core.fragments.BaseFragment
+import com.aurelien.test.core.livedata.EventObserver
 import com.aurelien.test.core.utils.setGone
 import com.aurelien.test.core.utils.setVisible
 import com.aurelien.test.core.utils.snack
 import com.aurelien.test.data.models.Place
 import com.aurelien.test.databinding.PlacesFragmentBinding
-import com.aurelien.test.core.livedata.EventObserver
 import com.aurelien.test.viewmodels.PlacesViewModel
 
 
@@ -92,6 +92,10 @@ class PlacesFragment : BaseFragment<PlacesFragmentBinding>(),
         viewModel.removePlaceFromTheList.observe(
             viewLifecycleOwner,
             EventObserver { it?.let { removePlaceFromTheList(it) } })
+
+        viewModel.noResultsMessageVisibilityLiveData.observe(
+            viewLifecycleOwner,
+            { setNoResultsMessageVisibility(it) })
     }
 
 
@@ -129,6 +133,16 @@ class PlacesFragment : BaseFragment<PlacesFragmentBinding>(),
 
     private fun removePlaceFromTheList(index: Int) {
         placesRecyclerViewAdapter.removePlaceAtIndex(index)
+    }
+
+    private fun setNoResultsMessageVisibility(visible: Boolean) {
+        binding.noResultsMessage.apply {
+            if (visible) {
+                setVisible()
+            } else {
+                setGone()
+            }
+        }
     }
 
     override fun placeClicked(place: Place) {

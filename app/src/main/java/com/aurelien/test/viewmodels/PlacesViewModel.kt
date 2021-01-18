@@ -4,10 +4,10 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.aurelien.test.R
+import com.aurelien.test.core.livedata.Event
 import com.aurelien.test.core.services.ApiCoroutinesClient
 import com.aurelien.test.data.models.Place
 import com.aurelien.test.data.repositories.PlacesRepository
-import com.aurelien.test.core.livedata.Event
 import kotlinx.coroutines.launch
 
 class PlacesViewModel @ViewModelInject constructor(
@@ -28,6 +28,7 @@ class PlacesViewModel @ViewModelInject constructor(
                     favoritePlaces.map { fp ->
                         sortedPlaces.find { it.id == fp.id }?.isFavorite = true
                     }
+                    _noResultsMessageVisibilityLiveData.value = sortedPlaces.isEmpty()
                     _placesLiveData.value = sortedPlaces
                 }
                 is ApiCoroutinesClient.Result.Error -> {
@@ -49,6 +50,7 @@ class PlacesViewModel @ViewModelInject constructor(
             if (places.isNotEmpty()) {
                 _placesLiveData.value = places.toMutableList()
             }
+            _noResultsMessageVisibilityLiveData.value = false
             _loaderVisibilityLiveData.value = false
             _contentVisibilityLiveData.value = true
         }
@@ -88,6 +90,7 @@ class PlacesViewModel @ViewModelInject constructor(
             if (searchIsNullOrEmpty) {
                 _searchViewDrawableId.value = R.drawable.ic_search_hint
                 _placesLiveData.value = favoritePlaces
+                _noResultsMessageVisibilityLiveData.value = false
             } else {
                 _searchViewDrawableId.value = R.drawable.ic_search
             }
@@ -104,6 +107,8 @@ class PlacesViewModel @ViewModelInject constructor(
         private const val KEY_PLACES = "${TAG}_KEY_PLACES"
         private const val KEY_FAVORITE_PLACES = "${TAG}_KEY_FAVORITE_PLACES"
         private const val KEY_SEARCH_VIEW_DRAWABLE_ID = "${TAG}_KEY_SEARCH_VIEW_DRAWABLE_ID"
+        private const val KEY_NO_RESULTS_MESSAGE_VISIBILITY =
+            "${TAG}_KEY_NO_RESULTS_MESSAGE_VISIBILITY"
     }
 
     private val _contentVisibilityLiveData = state.getLiveData(KEY_CONTENT_VISIBILITY, false)
@@ -142,12 +147,19 @@ class PlacesViewModel @ViewModelInject constructor(
     private val _removePlaceFromTheList: MutableLiveData<Event<Int?>> =
         MutableLiveData(Event(null))
 
+    private val _noResultsMessageVisibilityLiveData =
+        state.getLiveData(KEY_NO_RESULTS_MESSAGE_VISIBILITY, false)
+
+    val noResultsMessageVisibilityLiveData: LiveData<Boolean>
+        get() = _noResultsMessageVisibilityLiveData
+
     fun saveState() {
         state.set(KEY_CONTENT_VISIBILITY, contentVisibilityLiveData.value)
         state.set(KEY_LOADER_VISIBILITY, loaderVisibilityLiveData.value)
         state.set(KEY_PLACES, placesLiveData.value)
         state.set(KEY_FAVORITE_PLACES, favoritePlaces)
         state.set(KEY_SEARCH_VIEW_DRAWABLE_ID, searchViewDrawableId.value)
+        state.set(KEY_NO_RESULTS_MESSAGE_VISIBILITY, noResultsMessageVisibilityLiveData.value)
     }
 
     //endregion

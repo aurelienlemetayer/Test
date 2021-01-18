@@ -4,5 +4,5 @@
     <string name="favorite_icon_content_description">Icône indiquant si la station est sélectionné en tant que favorite ou non</string>
     <string name="common_error_message">Oups. Une erreur s\'est produite… Merci de réessayer.</string>
     <string name="departure_icon_content_description">Icône indique le type de moyen de transport du départ</string>
-
+    <string name="no_results_message">Désolé mais aucun résultat n\'a été trouvé pour votre recherche.</string>
 </resources>

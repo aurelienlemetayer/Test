@@ -63,6 +63,7 @@ class PlacesViewModelTests {
         assertEquals(sortedPlaces, viewModel.placesLiveData.value)
         assertEquals(false, viewModel.loaderVisibilityLiveData.value)
         assertEquals(true, viewModel.contentVisibilityLiveData.value)
+        assertEquals(false, viewModel.noResultsMessageVisibilityLiveData.value)
     }
 
     @Test
@@ -77,7 +78,25 @@ class PlacesViewModelTests {
         assertEquals(false, viewModel.loaderVisibilityLiveData.value)
         assertEquals(true, viewModel.contentVisibilityLiveData.value)
         assertEquals(true, viewModel.showSearchingPlacesErrorLiveData.value?.peekContent())
+        assertEquals(false, viewModel.noResultsMessageVisibilityLiveData.value)
     }
+
+    @Test
+    fun `Check search places with no results`() = testCoroutineRule.runBlockingTest {
+        val search = "Gare"
+        val places = listOf<Place>()
+
+        `when`(placesRepository.getPlaces(search))
+            .thenReturn(ApiCoroutinesClient.Result.Success(places))
+
+        viewModel.searchPlaces(search)
+
+        assertEquals(places, viewModel.placesLiveData.value)
+        assertEquals(false, viewModel.loaderVisibilityLiveData.value)
+        assertEquals(true, viewModel.contentVisibilityLiveData.value)
+        assertEquals(true, viewModel.noResultsMessageVisibilityLiveData.value)
+    }
+
 
     @Test
     fun `Check load favorite places`() = testCoroutineRule.runBlockingTest {
@@ -94,6 +113,7 @@ class PlacesViewModelTests {
         assertEquals(places, viewModel.placesLiveData.value)
         assertEquals(false, viewModel.loaderVisibilityLiveData.value)
         assertEquals(true, viewModel.contentVisibilityLiveData.value)
+        assertEquals(false, viewModel.noResultsMessageVisibilityLiveData.value)
     }
 
 
