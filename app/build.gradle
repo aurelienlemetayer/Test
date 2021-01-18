@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion Config.compileSdk
+    buildToolsVersion Config.buildTools
+
+    defaultConfig {
+        applicationId "com.aurelien.test"
+        minSdkVersion Config.minSdk
+        targetSdkVersion Config.targetSdk
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        all{
+            buildConfigField 'String', 'NAVITIA_API_URL', '"https://api.navitia.io/v1/coverage/fr-idf/"'
+            buildConfigField 'String', 'NAVITIA_API_TOKEN', '"b56ac04d-d6af-4777-95a2-0ce997442d4a"'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation Dependencies.androidx_appcompat
+    implementation Dependencies.androidx_core_ktx
+    implementation Dependencies.androidx_constraintLayout
+    implementation Dependencies.androidx_fragment_ktx
+    implementation Dependencies.androidx_liveData
+    implementation Dependencies.androidx_material
+    implementation Dependencies.androidx_recyclerview
+    kapt Dependencies.androidx_roomCompiler
+    implementation Dependencies.androidx_room_ktx
+    implementation Dependencies.androidx_roomRuntime
+    implementation Dependencies.androidx_viewModel
+
+    implementation Dependencies.kotlinCoroutines
+    implementation Dependencies.kotlinStdlib
+    implementation Dependencies.moshi
+    implementation Dependencies.okHttp
+    implementation Dependencies.okHttpLoggingInterceptor
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitMoshiConverter
+
+    //Hilt
+    implementation Dependencies.hiltAndroid
+    implementation Dependencies.hiltViewModel
+    kapt Dependencies.daggerCompiler
+    kapt Dependencies.hiltCompiler
+
+    testImplementation Dependencies.testlib_junit
+    testImplementation Dependencies.testkotlinCoroutines
+    testImplementation Dependencies.testandroidx_core_testing
+    testImplementation Dependencies.testMockitoCore
+    testImplementation Dependencies.testMockitoInline
+}

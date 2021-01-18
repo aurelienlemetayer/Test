@@ -1,0 +1,8 @@
+<resources>
+    <string name="schedules_title">Schedules</string>
+    <string name="search">Search a station</string>
+    <string name="favorite_icon_content_description">Icon indicates whether the station is selected as favorite or not</string>
+    <string name="common_error_message">Oops. Something went wrong… Please try again.</string>
+    <string name="departure_icon_content_description">The icon indicate the type of means of transport of the departure</string>
+    <string name="no_results_message">Sorry but no results were found for your search.</string>
+</resources>

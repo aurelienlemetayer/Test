@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Test" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/spirit_of_st_louis_contrast</item>
+        <item name="colorPrimaryVariant">@color/spirit_of_st_louis_surface</item>
+        <item name="colorOnPrimary">@color/gossamer_albatross</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/spirit_of_st_louis</item>
+        <item name="colorSecondaryVariant">@color/spirit_of_st_louis_variant</item>
+        <item name="colorOnSecondary">@color/learjet</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:windowBackground">@color/gossamer_albatross</item>
+    </style>
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+</resources>
