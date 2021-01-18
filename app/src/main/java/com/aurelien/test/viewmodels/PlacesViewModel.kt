@@ -150,5 +150,5 @@ class PlacesViewModel @ViewModelInject constructor(
         state.set(KEY_SEARCH_VIEW_DRAWABLE_ID, searchViewDrawableId.value)
     }
 
-//endregion
+    //endregion
 }

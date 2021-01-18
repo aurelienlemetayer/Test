@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "code": "1",
+      "hour": "14:45",
+      "direction": "La Défense (Grande Arche)"
+    },
+    {
+      "code": "187",
+      "hour": "14:45",
+      "direction": "Roche-sur-Linotte-et-Sorans-les-Cordiers"
+    },
+    {
+      "code": "A",
+      "hour": "14:45",
+      "direction": "La Défense (Grande Arche)"
+    }
+  ]
+}

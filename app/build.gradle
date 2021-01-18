@@ -58,7 +58,7 @@ dependencies {
 
     implementation Dependencies.kotlinCoroutines
     implementation Dependencies.kotlinStdlib
-    implementation(Dependencies.moshi)
+    implementation Dependencies.moshi
     implementation Dependencies.okHttp
     implementation Dependencies.okHttpLoggingInterceptor
     implementation Dependencies.retrofit

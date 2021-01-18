@@ -1,5 +1,6 @@
 package com.aurelien.test.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -8,6 +9,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aurelien.test.R
+import com.aurelien.test.activities.DeparturesActivity
 import com.aurelien.test.adapters.PlacesRecyclerViewAdapter
 import com.aurelien.test.core.fragments.BaseFragment
 import com.aurelien.test.core.utils.setGone
@@ -130,7 +132,13 @@ class PlacesFragment : BaseFragment<PlacesFragmentBinding>(),
     }
 
     override fun placeClicked(place: Place) {
-        //TODO Open place details
+        context?.let {
+            val intent = Intent(it, DeparturesActivity::class.java)
+            intent.putExtra(DeparturesActivity.PLACE_ID_ARGUMENT_KEY, place.id)
+            intent.putExtra(DeparturesActivity.PLACE_NAME_ARGUMENT_KEY, place.name)
+            startActivity(intent)
+        }
+
     }
 
     override fun addPlaceAsFavorite(place: Place) {

@@ -3,6 +3,7 @@ package com.aurelien.test.core.di.modules
 import com.aurelien.test.BuildConfig
 import com.aurelien.test.core.services.ApiCoroutinesClient
 import com.aurelien.test.core.services.ApiTokenInterceptor
+import com.aurelien.test.core.utils.CustomDateAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -13,6 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.*
 import javax.inject.Singleton
 
 
@@ -46,6 +48,7 @@ class ApiClientModule {
                 MoshiConverterFactory.create(
                     Moshi.Builder()
                         .add(KotlinJsonAdapterFactory())
+                        .add(Date::class.java, CustomDateAdapter())
                         .build()
                 )
             )
