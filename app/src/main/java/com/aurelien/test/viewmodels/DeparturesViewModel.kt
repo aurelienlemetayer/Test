@@ -6,7 +6,7 @@ import androidx.lifecycle.*
 import com.aurelien.test.core.services.ApiCoroutinesClient
 import com.aurelien.test.data.models.Departure
 import com.aurelien.test.data.repositories.DeparturesRepository
-import com.aurelien.test.services.Event
+import com.aurelien.test.core.livedata.Event
 import kotlinx.coroutines.launch
 
 class DeparturesViewModel @ViewModelInject constructor(

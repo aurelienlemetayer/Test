@@ -6,7 +6,6 @@ import com.aurelien.test.R
 import com.aurelien.test.core.activities.BaseActivity
 import com.aurelien.test.databinding.DeparturesActivityBinding
 import com.aurelien.test.fragments.DeparturesFragment
-import com.aurelien.test.fragments.PlacesFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

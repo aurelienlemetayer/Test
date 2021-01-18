@@ -6,7 +6,6 @@ import com.aurelien.test.data.models.Departure
 import com.aurelien.test.data.models.DepartureApiResult
 import com.aurelien.test.data.models.DeparturesApiResult
 import com.aurelien.test.data.remote.DeparturesApi
-import java.util.*
 import javax.inject.Inject
 
 class DeparturesRepository @Inject constructor(

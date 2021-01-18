@@ -7,7 +7,7 @@ import com.aurelien.test.R
 import com.aurelien.test.core.services.ApiCoroutinesClient
 import com.aurelien.test.data.models.Place
 import com.aurelien.test.data.repositories.PlacesRepository
-import com.aurelien.test.services.Event
+import com.aurelien.test.core.livedata.Event
 import kotlinx.coroutines.launch
 
 class PlacesViewModel @ViewModelInject constructor(

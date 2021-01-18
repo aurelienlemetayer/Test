@@ -12,7 +12,7 @@ import com.aurelien.test.core.utils.setVisible
 import com.aurelien.test.core.utils.snack
 import com.aurelien.test.data.models.Departure
 import com.aurelien.test.databinding.DeparturesFragmentBinding
-import com.aurelien.test.services.EventObserver
+import com.aurelien.test.core.livedata.EventObserver
 import com.aurelien.test.viewmodels.DeparturesViewModel
 
 
