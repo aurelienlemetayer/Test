@@ -1,4 +1,4 @@
-package com.aurelien.test.services
+package com.aurelien.test.core.livedata
 
 import androidx.lifecycle.Observer
 
